@@ -15,7 +15,7 @@ export default function getWeather() {
     }
   }, []);
 
-  const baseUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_API_KEY}`;
+  const baseUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`;
 
   const { data, error } = useSWR(baseUrl, fetcher);
   if (error) return <div>Failed to load</div>;
