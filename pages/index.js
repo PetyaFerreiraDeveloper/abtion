@@ -1,8 +1,10 @@
 import Head from "next/head";
 import { useState } from "react";
 import getWeather from "../api/getWeather";
+import getForecast from "@/api/getForecast";
 import { Header } from "../components/Header";
 import { Today } from "../components/Today";
+import { NextWeek } from "../components/NextWeek";
 
 export default function Home() {
   const active = 'text-black dark:text-white';
@@ -30,6 +32,7 @@ export default function Home() {
   }
 
   const data = getWeather();
+  const forecast = getForecast();
 
   return (
     <div className="h-screen flex flex-col">
@@ -54,7 +57,7 @@ export default function Home() {
             <section>
               {today.clicked ? <Today data={data} /> : null}
               {lastWeek.clicked ? <p>Last week</p> : null}
-              {nextWeek.clicked ? <p>Next week</p> : null}
+              {nextWeek.clicked ? <NextWeek forecast={forecast} /> : null}
             </section>
           </main>
         </>
