@@ -46,15 +46,15 @@ export default function Home() {
       {data.main ? (
         <>
           <Header data={data} />
-          <main className='py-8 px-10 bg-[#F5C023] dark:bg-[#0F101C] h-screen'>
-            <nav className="mb-[50px]">
+          <main className='py-8 bg-[#F5C023] dark:bg-[#0F101C] h-screen'>
+            <nav className="mb-[50px] px-10">
               <ul className="flex justify-between text-[20px] cursor-pointer">
                 <li className={`${lastWeek.style}`} onClick={clickHandler}>last week</li>
                 <li className={`${today.style}`} onClick={clickHandler}>today</li>
                 <li className={`${nextWeek.style}`} onClick={clickHandler}>next week</li>
               </ul>
             </nav>
-            <section>
+            <section >
               {today.clicked ? <Today data={data} /> : null}
               {lastWeek.clicked ? <p>Last week</p> : null}
               {nextWeek.clicked ? <NextWeek forecast={forecast} /> : null}
