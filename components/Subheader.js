@@ -1,9 +1,6 @@
-import Image from "next/image";
 import React from "react";
 
 export const Subheader = ({ data, nextWeek }) => {
-  const icon = data.weather[0].icon;
-  const temp = Math.round(data.main.temp);
 
   return (
     <header
