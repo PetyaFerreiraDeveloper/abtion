@@ -6,7 +6,7 @@ export const Header = ({ data }) => {
   const temp = Math.round(data.main.temp);
 
   return (
-    <header className="py-10 px-8 bg-[#F8D21C] dark:bg-gray-700 flex flex-col ">
+    <header className="py-10 px-8 bg-ligthYellow dark:bg-gray-400 flex flex-col ">
       <h2 className="text-center text-[20px] dark:text-white">{data.name} </h2>
       <div className="flex justify-between items-center">
         <Image

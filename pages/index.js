@@ -3,33 +3,33 @@ import { useState } from "react";
 import getWeather from "../api/getWeather";
 import getForecast from "@/api/getForecast";
 import { Header } from "../components/Header";
+import { Subheader } from "../components/Subheader";
 import { Today } from "../components/Today";
 import { NextWeek } from "../components/NextWeek";
 
 export default function Home() {
-  const active = 'text-black dark:text-white';
-  const inactive = 'text-neutral-400';
+  const active = "text-black dark:text-white";
+  const inactive = "text-neutral-400";
 
-  const [lastWeek, setLastWeek] = useState({style: inactive, clicked: false});
-  const [today, setToday] = useState({style: active, clicked: true});
-  const [nextWeek, setNextWeek] = useState({style: inactive, clicked: false});
-
+  const [lastWeek, setLastWeek] = useState({ style: inactive, clicked: false });
+  const [today, setToday] = useState({ style: active, clicked: true });
+  const [nextWeek, setNextWeek] = useState({ style: inactive, clicked: false });
 
   const clickHandler = (e) => {
-    if(e.target.innerText === 'today') {
-      setNextWeek({style: inactive, clicked: false});
-      setLastWeek({style: inactive, clicked: false});
-      setToday({style: active, clicked: true});
-    } else if (e.target.innerText === 'last week') {
-      setToday({style: inactive, clicked: false});
-      setNextWeek({style: inactive, clicked: false});
-      setLastWeek({style: active, clicked: true});
-    } else if (e.target.innerText === 'next week') {
-      setNextWeek({style: active, clicked: true});
-      setLastWeek({style: inactive, clicked: false});
-      setToday({style: inactive, clicked: false});
+    if (e.target.innerText === "today") {
+      setNextWeek({ style: inactive, clicked: false });
+      setLastWeek({ style: inactive, clicked: false });
+      setToday({ style: active, clicked: true });
+    } else if (e.target.innerText === "last week") {
+      setToday({ style: inactive, clicked: false });
+      setNextWeek({ style: inactive, clicked: false });
+      setLastWeek({ style: active, clicked: true });
+    } else if (e.target.innerText === "next week") {
+      setNextWeek({ style: active, clicked: true });
+      setLastWeek({ style: inactive, clicked: false });
+      setToday({ style: inactive, clicked: false });
     }
-  }
+  };
 
   const data = getWeather();
   const forecast = getForecast();
@@ -45,18 +45,29 @@ export default function Home() {
 
       {data.main ? (
         <>
-          <Header data={data} />
-          <main className='py-8 bg-[#F5C023] dark:bg-[#0F101C] h-screen'>
-            <nav className="mb-[50px] px-10">
+          {today.clicked ? <Header data={data} /> : <Subheader data={data} />}
+
+          <main className="py-8 bg-darkYellow dark:bg-gray-800 h-screen">
+            <nav className="px-10">
               <ul className="flex justify-between text-[20px] cursor-pointer">
-                <li className={`${lastWeek.style}`} onClick={clickHandler}>last week</li>
-                <li className={`${today.style}`} onClick={clickHandler}>today</li>
-                <li className={`${nextWeek.style}`} onClick={clickHandler}>next week</li>
+                <li className={`${lastWeek.style}`} onClick={clickHandler}>
+                  last week
+                </li>
+                <li className={`${today.style}`} onClick={clickHandler}>
+                  today
+                </li>
+                <li className={`${nextWeek.style}`} onClick={clickHandler}>
+                  next week
+                </li>
               </ul>
             </nav>
-            <section >
+            <section>
               {today.clicked ? <Today data={data} /> : null}
-              {lastWeek.clicked ? <p>Last week</p> : null}
+              {lastWeek.clicked ? (
+                <p className="dark:text-white px-10">
+                  Last week data requires paid API subscrip
+                </p>
+              ) : null}
               {nextWeek.clicked ? <NextWeek forecast={forecast} /> : null}
             </section>
           </main>
