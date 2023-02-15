@@ -45,9 +45,9 @@ export default function Home() {
 
       {data.main ? (
         <>
-          {today.clicked ? <Header data={data} /> : <Subheader data={data} />}
+          {today.clicked ? <Header data={data} /> : <Subheader data={data} nextWeek={nextWeek.clicked} />}
 
-          <main className="py-8 bg-darkYellow dark:bg-gray-800 h-screen">
+          <main className={`py-8 ${nextWeek.clicked ? 'bg-gray-200' : 'bg-darkYellow'} dark:bg-gray-800 h-screen sm:w-[500px] sm:mx-auto`}>
             <nav className="px-10">
               <ul className="flex justify-between text-[20px] cursor-pointer">
                 <li className={`${lastWeek.style}`} onClick={clickHandler}>
@@ -64,7 +64,7 @@ export default function Home() {
             <section>
               {today.clicked ? <Today data={data} /> : null}
               {lastWeek.clicked ? (
-                <p className="dark:text-white px-10">
+                <p className="dark:text-white px-10 mt-10">
                   Last week data requires paid API subscrip
                 </p>
               ) : null}

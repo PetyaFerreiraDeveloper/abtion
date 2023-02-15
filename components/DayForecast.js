@@ -10,7 +10,7 @@ export const DayForecast = ({ day, index }) => {
   const dayOfWeek = new Intl.DateTimeFormat("en-US", options).format(date);
   
   return index == 0 ? (
-    <li className="flex items-center pl-8 pr-10 py-8 bg-[#F5C023] dark:bg-gray-400">
+    <li className="flex items-center pl-8 pr-10 py-8 bg-lightYellow dark:bg-gray-400">
       <div className="pr-5">
         <Image
           src={`http://openweathermap.org/img/w/${icon}.png`}
@@ -29,7 +29,7 @@ export const DayForecast = ({ day, index }) => {
       </div>
     </li>
   ) : index % 2 == 0 ? (
-    <li className="flex items-center pl-8 pr-10 py-8 bg-[#F5C023] dark:bg-gray-400">
+    <li className="flex items-center pl-8 pr-10 py-8 bg-lightYellow dark:bg-gray-400">
       <div className="pr-5">
         <Image
           src={`http://openweathermap.org/img/w/${icon}.png`}
@@ -48,7 +48,7 @@ export const DayForecast = ({ day, index }) => {
       </div>
     </li>
   ) : (
-    <li className="flex items-center pl-8 pr-10 py-8 bg-[#F5C023] dark:bg-gray-700">
+    <li className="flex items-center pl-8 pr-10 py-8 bg-darkYellow dark:bg-gray-700">
       <div className="pr-5">
         <Image
           src={`http://openweathermap.org/img/w/${icon}.png`}
