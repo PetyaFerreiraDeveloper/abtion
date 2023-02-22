@@ -20,7 +20,7 @@ export const DayForecast = ({ day, index }) => {
         />
       </div>
       <div className="flex flex-1 justify-between">
-        <p className="pr-">Today</p>
+        <p className="pr-">Tomorrow</p>
         <p>
           <span>{max} &deg; </span>
           <span>/</span>
